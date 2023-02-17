@@ -1,0 +1,15 @@
+# .github/workflows/schedule-netlify-build.yml
+
+name: Schedule Netlify Build
+on:
+  schedule:
+    # Customize schedule expression at crontab.guru
+    # This one runs at 800 UTC daily
+    - cron: "@"
+jobs:
+  build:
+    name: Call Netlify build hook
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Curl request
+        run: curl -X POST -d '{}' https://api.netlify.com/build_hooks/5c23354f454e1350f8543e78
